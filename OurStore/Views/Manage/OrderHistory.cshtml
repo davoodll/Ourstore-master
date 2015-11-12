@@ -1,0 +1,38 @@
+﻿@model IEnumerable<OurStore.Model.Order>
+@using OurStore.Model;
+
+@{
+    ViewBag.Title = "Order History";
+}
+
+                      <h2 style="color:white;">Order History</h2>
+
+                      <table class="table" style="color:white;">
+                          <tr>
+                              <th>
+                                  Order Id
+                              </th>
+                              <th>
+                                  Order time
+                              </th>
+                              <th>
+                                  Order Cost
+                              </th>
+                          </tr>
+
+                          @foreach (var item in Model)
+                          {
+                              <tr>
+                                  <td>
+                                      @Html.ActionLink("" + item.OrderId, "ShowOrder", new { id = item.OrderId })
+                                  </td>
+                                  <td>
+                                      @Html.DisplayFor(modelItem => item.OrderDate)
+                                  </td>
+                                  <td>
+                                      @Html.DisplayFor(modelItem => item.Total)
+                                  </td>
+                              </tr>
+                          }
+
+                      </table>

@@ -1,0 +1,62 @@
+﻿@model OurStore.Model.Order
+
+@{
+    ViewBag.Title = "ShowOrder";
+}
+
+<h2 style="color:white;">Show Order</h2>
+<br />
+<p>@Html.ActionLink("Back", "OrderHistory")</p>
+<br />
+<p style="color:white;"><b>Your orderid is: @Model.OrderId</b></p>
+<br />
+<p style="color:white;">Username: @Model.Username</p>
+<p style="color:white;">Userid: @Model.UserId</p>
+<br />
+<p style="color:white;">Total payed amount: @Model.Total kr</p>
+<p style="color:white;">Time of order: @Model.OrderDate</p>
+<br />
+<p style="color:white;"><b>Order Details:</b></p>
+<table class="table" style="color:white;">
+    <tbody>
+        <tr>
+            <td><b>Product Name:</b></td>
+            <td><b>Price (pr. unit)</b></td>
+            <td><b>Quantity</b></td>
+        </tr>
+        @foreach (var item in Model.OrderDetails)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductPrice) kr
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+            </tr>
+        }
+        <tr>
+            <td>
+                <b>Total:</b>
+            </td>
+            <td></td>
+            <td align="right"><b>@Model.Total kr</b></td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Shipping information:</p>
+<p>@Model.FirstName @Model.LastName</p>
+<p>@Model.Address</p>
+<p>@Model.PostalCode, @Model.City</p>
+<p>Contact number: @Model.Phone</p>
+<br />
+<p>E-mail with reciept will be sent to: @Model.Email</p>
+<br />
+<br />
+
+
+

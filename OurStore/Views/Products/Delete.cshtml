@@ -1,0 +1,51 @@
+﻿@model OurStore.Model.Product
+@using OurStore.Model
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+h2 style="color:white;">Delete Confirmation</h2>
+
+<h3 style="color:white;">Are you sure you want to delete the product <strong>@Model.Name</strong>?</h3>
+<div style="color:white;">
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal" style="color:white;">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductPicUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductPicUrl)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

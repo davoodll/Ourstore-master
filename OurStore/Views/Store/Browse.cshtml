@@ -1,0 +1,50 @@
+﻿@model OurStore.Model.Category
+@{
+    ViewBag.Title = "Browse";
+}
+<div class="master-wrapper-main" style="text-align: left;
+         background: none repeat scroll 0 0 #FFFFFF;
+         height:760px;
+         min-width:1125px;
+        float: left;
+        /* font-family: arial,helvetica,sans-serif; */
+        color: #5C5B5B;">
+    <div class="genre">
+        <h3><em>@Model.Name</em></h3>
+        <div class="side-2" style=" float: left;width: 180px;margin: 60px 20px 0px 20px;display: inline;">
+            <div class="subnav" style="background:#ffffff; margin-bottom: 16px; margin-top:20px;width: 200px;">
+                @{Html.RenderAction("CategoryMenu", "Store");}
+            </div>
+        </div>
+
+
+
+        <div class="center-22" style=" float: left; min-height: 400px; background: #FFF; display: inline; border-radius: 5px; width: 820px; margin: 60px 20px; margin-bottom: 60px;">
+
+            <div class="row" style="margin-right:-15px; margin-left:-15px; text-align:center; margin-top:20px;">
+
+
+                @foreach (var product in Model.Products)
+            {
+                    <div class="col-sm-6 col-md-3" style="width: 27%;
+    margin-top:10px;">
+                        <div class="thumbnail">
+                            <a href="@Url.Action("Details", new { id = product.ProductId })">
+                                <img alt="@product.Name" src="@product.ProductPicUrl" style=" width: 190px; height: 244px;" />
+                                <div class="caption">
+                                    <span>@product.Name</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                   
+                    
+
+
+
+
+            }
+        </div>
+    </div>
+</div>
+

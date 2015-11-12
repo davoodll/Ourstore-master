@@ -1,0 +1,38 @@
+﻿@model OurStore.Model.Product
+@{
+    ViewBag.Title = "Product - " + Model.Name;
+}
+<div class="master-wrapper-main" style="text-align: left;
+         background: none repeat scroll 0 0 #FFFFFF;
+         height:1000px;
+         min-width:1100px;
+        float: left;
+        /* font-family: arial,helvetica,sans-serif; */
+        color: #5C5B5B;">
+    <div class="side-2" style=" float: left;width: 180px;margin: 60px 20px 0px 20px;display: inline;">
+        <div class="subnav" style="background:#ffffff; margin-bottom: 16px; margin-top:20px;width: 200px;">
+            @{Html.RenderAction("CategoryMenu", "Store");}
+        </div>
+    </div>
+    <div class="center-22" style=" float: left; min-height: 400px; background: #FFF; display: inline; border-radius: 5px; width: 820px; margin: 60px 20px; margin-bottom: 60px;">
+        <h2 style="text-align:center;">@Model.Name</h2>
+        <div style="text-align:center; height:250px;">
+            <p>
+                <img alt="@Model.Name" src="@Model.ProductPicUrl" style=" width:190px; height:244px;" />
+            </p>
+        </div>
+        <div id="album-details" style="text-align:center;">
+            <p>
+                <em>Genre:</em>
+                @Model.Category.Name
+            </p>
+            <p>
+                <em>Price:</em>
+                @String.Format("{0:F}", Model.Price)
+            </p>
+            <p class="button">
+                @Html.ActionLink("Add to cart", "AddToCart", "ShopCart", new { id = Model.ProductId }, "")
+            </p>
+        </div>
+    </div>
+</div>
